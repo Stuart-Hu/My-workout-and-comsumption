@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEwUlEQVR4nO3dQXLbMBBEUSSVC3jv+59MB8kCCYtlqUlQIjA9wH/rVIUEvwakZFu/vr6+CvDK7+gDgC/igEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARB6Q/0QcQ5vF4tP/j7+/vfkdi69civw55KYUWK+Qycxy3B6HMGsqEcQxr4tlklcwTR2ATz+aoZIY4rLLYy55I4jhsm3iWtJKUcSTKYi9dIvneBEtaRkl45Jkmx72Le+l1HPhfB8oRxy3X5sZL4nY8nSSI45MrMeACmB/eJ9zjeG/pQxY90aE28o0j6VonPeyXTOO4usSGizvBKTjGMdOH6anPxe59jtSr+SzwgflzXpOjfXX8s/gh46m5xJFx7d6Q6zQttpVcS/aJ9uN32GIs4miUvYwq0VnEbystL5FEC9rO/8SDJ4f/AvXTcl6xm0tkHCuXUZn3ERYHZVTOfcTEQRl7tn2YPq2sU0bleb4BcZy+CDxXqrfTsx4/PEbHQRkHjs99/MoMjYMyTqkVCFmZdX/LPovAF8y4ycHYaLRfh9g1cZkclLFnshqDJsfx2DBZC/wwIg6HT5/xhvg3wRgbtrrHwdjIK3hyMDacRcZBGeb6xsGeklrY5GBs+OsYB2Mju/hHWdiKiYM9JYVecbCnTCBgcjA2suCeA1KXONhT5jB6crCnJMK2Aok4IN0fBzcc0xg6ObjhyIVtBRJxQCIOSC6/txLux300t0fl9r8JdvCoYrvcGY95jNW3leMH78Ufy5eOo+Xar9zHunG0X/Vl+1g3DpxaNI6rw2DN4bFoHGhBHJCIAxJxQFo0jqtvfa75VumicaDFunG0D4M1x0ZZOY7SdtWXLaMsHkfx+4vSVu7/Gq+kn4Dz8xzP+GGff6jh2erbCg4QByTigOT1fSuwcn8c3NlNg20FEnFAsvsCQPjoEge3HXNgW4Hk+KXDMNErDnaWCcRsKwyPFLjngNQxDnaW7MImBzuLv75xMDxSi7znYHiYC74hpQ9n3eNgZ8kr/lGW4WFrRBwMj6QGTY7jPhgenuK3lYo+9h7/xR7GuDhON5fwtTCxX4fYNXGZHFACR4jX960wPNQKhKyM3RcArtyH29/advzS4TX7OD3r8e8ImN5zrNaH5/nGxNHyIvBcrx5azjTkjcSwyUEflW0ZJXZboQ/nMkr4PcfKfZiXUXr8TbA3NF7+aT7Ay3K+pk8rL80xQhKdhUUc7S+RRCv7Uvvxh4+NYrKtbHKt3SUZT80rjnJxNvis44G8Z2SxrexdWh3/XSZvGcVwclRXr7rbspYpTsE0jvLuVAhf4qSH/ZJvHFWitU50qI3c4yif3VgMWHrzw/tEgjjKTTeeN14Jt+PpJEcc1b3PJoGPRf5ZVJniqPwfXw9kyaKye5/jVK713Ut35PkmxybRCEmXRZU4jo1tJUmb2MwQR2WVSPYsqnni2ARWMkcTmwnj2AyrZLImNjPHsXd7KLMGsbdKHM9Sf5g+xrpx4FS+N8EwDHFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckP4Cud2gRmZtUA8AAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEwUlEQVR4nO3dQXLbMBBEUSSVC3jv+59MB8kCCYtlqUlQIjA9wH/rVIUEvwakZFu/vr6+CvDK7+gDgC/igEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARB6Q/0QcQ5vF4tP/j7+/vfkdi69civw55KYUWK+Qycxy3B6HMGsqEcQxr4tlklcwTR2ATz+aoZIY4rLLYy55I4jhsm3iWtJKUcSTKYi9dIvneBEtaRkl45Jkmx72Le+l1HPhfB8oRxy3X5sZL4nY8nSSI45MrMeACmB/eJ9zjeG/pQxY90aE28o0j6VonPeyXTOO4usSGizvBKTjGMdOH6anPxe59jtSr+SzwgflzXpOjfXX8s/gh46m5xJFx7d6Q6zQttpVcS/aJ9uN32GIs4miUvYwq0VnEbystL5FEC9rO/8SDJ4f/AvXTcl6xm0tkHCuXUZn3ERYHZVTOfcTEQRl7tn2YPq2sU0bleb4BcZy+CDxXqrfTsx4/PEbHQRkHjs99/MoMjYMyTqkVCFmZdX/LPovAF8y4ycHYaLRfh9g1cZkclLFnshqDJsfx2DBZC/wwIg6HT5/xhvg3wRgbtrrHwdjIK3hyMDacRcZBGeb6xsGeklrY5GBs+OsYB2Mju/hHWdiKiYM9JYVecbCnTCBgcjA2suCeA1KXONhT5jB6crCnJMK2Aok4IN0fBzcc0xg6ObjhyIVtBRJxQCIOSC6/txLux300t0fl9r8JdvCoYrvcGY95jNW3leMH78Ufy5eOo+Xar9zHunG0X/Vl+1g3DpxaNI6rw2DN4bFoHGhBHJCIAxJxQFo0jqtvfa75VumicaDFunG0D4M1x0ZZOY7SdtWXLaMsHkfx+4vSVu7/Gq+kn4Dz8xzP+GGff6jh2erbCg4QByTigOT1fSuwcn8c3NlNg20FEnFAsvsCQPjoEge3HXNgW4Hk+KXDMNErDnaWCcRsKwyPFLjngNQxDnaW7MImBzuLv75xMDxSi7znYHiYC74hpQ9n3eNgZ8kr/lGW4WFrRBwMj6QGTY7jPhgenuK3lYo+9h7/xR7GuDhON5fwtTCxX4fYNXGZHFACR4jX960wPNQKhKyM3RcArtyH29/advzS4TX7OD3r8e8ImN5zrNaH5/nGxNHyIvBcrx5azjTkjcSwyUEflW0ZJXZboQ/nMkr4PcfKfZiXUXr8TbA3NF7+aT7Ay3K+pk8rL80xQhKdhUUc7S+RRCv7Uvvxh4+NYrKtbHKt3SUZT80rjnJxNvis44G8Z2SxrexdWh3/XSZvGcVwclRXr7rbspYpTsE0jvLuVAhf4qSH/ZJvHFWitU50qI3c4yif3VgMWHrzw/tEgjjKTTeeN14Jt+PpJEcc1b3PJoGPRf5ZVJniqPwfXw9kyaKye5/jVK713Ut35PkmxybRCEmXRZU4jo1tJUmb2MwQR2WVSPYsqnni2ARWMkcTmwnj2AyrZLImNjPHsXd7KLMGsbdKHM9Sf5g+xrpx4FS+N8EwDHFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckP4Cud2gRmZtUA8AAAAASUVORK5CYII=">
+<title>自律挑战</title>
+<style>
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;background:var(--kimi-color-background,#ffffff);color:var(--kimi-color-text-primary,#1a1a1a);}
+button,input,select,textarea{font:inherit;color:inherit;}
+*{-webkit-tap-highlight-color:transparent;}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+.wrap{max-width:430px;margin:0 auto;padding:16px 16px calc(90px + env(safe-area-inset-bottom));}
+.installbar{display:none;gap:8px;align-items:center;border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 16%,transparent);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;margin-bottom:12px;}
+.installbar .x{margin-left:auto;flex:none;background:none;border:0;cursor:pointer;font-size:16px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 45%,transparent);padding:0 2px;}
+.card{border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 14%,transparent);border-radius:12px;padding:16px;margin-bottom:12px;}
+.cardhead{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;}
+.cardhead .ico{width:20px;height:20px;flex:none;}
+.spacer{flex:1;}
+.meta{font-size:12px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 48%,transparent);}
+.big{font-size:32px;font-weight:500;line-height:1.15;}
+.mid{font-size:20px;font-weight:500;}
+.row{display:flex;align-items:baseline;gap:8px;}
+.dotok{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--kimi-color-positive,#0a7d3b);}
+.dotok.off{color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 55%,transparent);}
+.dotok svg{width:14px;height:14px;}
+.track{height:8px;border-radius:999px;background:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 8%,transparent);overflow:hidden;margin:12px 0 8px;}
+.fill{height:100%;border-radius:999px;background:var(--kimi-color-text-primary,#1a1a1a);transition:width .25s ease-out;}
+.btn{border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 20%,transparent);background:transparent;border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer;transition:opacity .15s;}
+.btn.primary{background:var(--kimi-color-text-primary,#1a1a1a);color:var(--kimi-color-background,#ffffff);border-color:transparent;}
+.btn.flash{background:var(--kimi-color-positive,#0a7d3b);border-color:transparent;color:#fff;}
+.btn:disabled{opacity:.7;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 18%,transparent);border-radius:6px;padding:6px 12px;font-size:13px;cursor:pointer;background:transparent;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 75%,transparent);}
+.chip.on{background:var(--kimi-color-text-primary,#1a1a1a);color:var(--kimi-color-background,#ffffff);border-color:transparent;}
+.field{width:100%;border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 18%,transparent);border-radius:10px;padding:9px 12px;font-size:15px;background:transparent;box-sizing:border-box;}
+.field:focus{outline:2px solid var(--kimi-color-text-primary,#1a1a1a);outline-offset:1px;}
+.banner{display:flex;gap:8px;align-items:flex-start;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;margin-top:10px;background:color-mix(in srgb,var(--kimi-color-warning,#c77700) 14%,transparent);}
+.banner svg{width:18px;height:18px;flex:none;color:var(--kimi-color-warning,#c77700);}
+.rec{display:flex;align-items:center;gap:8px;font-size:13px;padding:7px 0;border-top:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 8%,transparent);}
+.rec svg{width:15px;height:15px;flex:none;}
+.warn{color:var(--kimi-color-warning,#c77700);}
+.dang{color:var(--kimi-color-danger,#c2402a);}
+.pos{color:var(--kimi-color-positive,#0a7d3b);}
+.acc{color:var(--kimi-color-accent,#2f6bff);}
+.mut{color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 55%,transparent);}
+.linklike{background:none;border:0;cursor:pointer;font-size:12px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 45%,transparent);padding:0;}
+.form{display:none;margin-top:12px;border-top:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 10%,transparent);padding-top:12px;}
+.form.open{display:block;}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.summary-line{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 8%,transparent);font-size:14px;}
+.summary-line:first-child{border-top:0;}
+.view{display:none;}
+.view.on{display:block;}
+.rule{font-size:13px;line-height:1.7;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 70%,transparent);}
+h1{font-size:17px;font-weight:500;margin:0 0 12px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 12%,transparent);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.cell{padding:12px 4px;text-align:center;}
+.cell + .cell{border-left:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 10%,transparent);}
+.cell .k{font-size:12px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 48%,transparent);margin-bottom:4px;}
+.cell .v{font-size:14px;font-weight:500;}
+.cell .v.click{cursor:pointer;}
+.tabbar{position:fixed;left:0;right:0;bottom:0;background:var(--kimi-color-background,#ffffff);border-top:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 12%,transparent);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:10;}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 6px;font-size:11px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 45%,transparent);cursor:pointer;border:0;background:none;}
+.tab.on{color:var(--kimi-color-text-primary,#1a1a1a);}
+.tab svg{width:22px;height:22px;}
+.grouptitle{font-size:13px;font-weight:500;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 70%,transparent);margin:18px 0 2px;}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 12%,transparent);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.stat{padding:12px;}
+.stat + .stat,.stat:nth-child(2n+1){border-left:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 10%,transparent);}
+.stat:nth-child(-n+2){border-bottom:1px solid color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 10%,transparent);}
+.stat .k{font-size:12px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 48%,transparent);}
+.stat .v{font-size:19px;font-weight:500;margin-top:2px;}
+select.field{appearance:none;-webkit-appearance:none;}
+textarea.field{min-height:90px;font-size:13px;resize:vertical;line-height:1.5;}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);background:var(--kimi-color-text-primary,#1a1a1a);color:var(--kimi-color-background,#fff);padding:10px 18px;border-radius:999px;font-size:13px;opacity:0;transition:opacity .25s ease-out,transform .25s ease-out;pointer-events:none;z-index:60;max-width:82%;text-align:center;}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+<div class="wrap">
+
+  <div class="installbar" id="installbar">
+    <span>Safari 点「分享」→「添加到主屏幕」，即可像 App 一样全屏使用。</span>
+    <button class="x" id="installbar-x">×</button>
+  </div>
+
+  <!-- 首页 -->
+  <div class="view on" id="view-home">
+    <section class="card">
+      <div class="cardhead">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.09998 5.99998C4.09998 5.50292 4.50292 5.09998 4.99998 5.09998H19C19.497 5.09998 19.9 5.50292 19.9 5.99998C19.9 6.49703 19.497 6.89998 19 6.89998H4.99998C4.50292 6.89998 4.09998 6.49703 4.09998 5.99998ZM4.09998 12C4.09998 11.5029 4.50292 11.1 4.99998 11.1H13C13.497 11.1 13.9 11.5029 13.9 12C13.9 12.497 13.497 12.9 13 12.9H4.99998C4.50292 12.9 4.09998 12.497 4.09998 12ZM4.09998 18C4.09998 17.5029 4.50292 17.1 4.99998 17.1H13C13.497 17.1 13.9 17.5029 13.9 18C13.9 18.497 13.497 18.9 13 18.9H4.99998C4.50292 18.9 4.09998 18.497 4.09998 18Z" fill="currentColor"/>
+</svg>
+        <span id="h-title">消费挑战</span>
+        <span class="spacer"></span>
+        <span class="dotok" id="h-status"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9Z" fill="currentColor"/></svg><span id="h-status-t">进行中</span></span>
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <span class="mid num" id="h-day">第 — / — 天</span>
+        <span class="meta num" id="h-range"></span>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <span class="big num" id="h-spent">¥0</span>
+        <span class="mut num" style="font-size:16px;" id="h-budget"></span>
+      </div>
+      <div class="track"><div class="fill" id="h-bar" style="width:0%;"></div></div>
+      <div class="row" style="justify-content:space-between;">
+        <span class="meta num" id="h-left"></span>
+        <span class="meta num" id="h-vio"></span>
+      </div>
+      <div class="actions">
+        <button class="btn" id="h-add-toggle">记一笔</button>
+        <button class="btn" id="h-avoid-toggle">忍住没买</button>
+      </div>
+      <div class="form" id="h-form">
+        <div style="display:flex;gap:8px;">
+          <input class="field num" id="h-amt" type="text" inputmode="decimal" placeholder="金额" style="flex:1;">
+          <input class="field" id="h-note" type="text" placeholder="买了什么（可留空）" style="flex:2;">
+        </div>
+        <div class="chips" style="margin-top:10px;" id="h-cats">
+          <button class="chip on" data-cat="A">A · 挑战内允许</button>
+          <button class="chip" data-cat="B">B · 挑战禁止</button>
+          <button class="chip" data-cat="S">特殊事件</button>
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="h-confirm" style="flex:1;">确认记录</button>
+          <button class="linklike" id="h-cancel">收起</button>
+        </div>
+      </div>
+      <div class="form" id="h-avoidform">
+        <div style="display:flex;gap:8px;">
+          <input class="field num" id="h-avoid-amt" type="text" inputmode="decimal" placeholder="本来要花多少" style="flex:1;">
+          <input class="field" id="h-avoid-note" type="text" placeholder="想买的什么" style="flex:2;">
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="h-avoid-confirm" style="flex:1;">记录这次忍住</button>
+          <button class="linklike" id="h-avoid-cancel">收起</button>
+        </div>
+      </div>
+      <div class="banner" id="h-banner" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9996 7C11.5026 7 11.0996 7.36985 11.0996 7.82609V14.1739C11.0996 14.6301 11.5026 15 11.9996 15C12.4967 15 12.8996 14.6301 12.8996 14.1739V7.82609C12.8996 7.36985 12.4967 7 11.9996 7Z" fill="currentColor"/>
+<path d="M12.8996 17.1006C12.8996 17.5974 12.4968 18.001 11.9992 18.001C11.5024 18.001 11.0996 17.5974 11.0996 17.1006C11.0996 16.6038 11.5024 16.2002 11.9992 16.2002C12.4968 16.2002 12.8996 16.6038 12.8996 17.1006Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.5108 3.5501C13.3946 1.61676 10.6041 1.61676 9.48786 3.5501L1.69363 17.0501C0.577423 18.9834 1.97269 21.4001 4.20511 21.4001H19.7936C22.026 21.4001 23.4212 18.9834 22.305 17.0501L14.5108 3.5501ZM11.0467 4.4501C11.4701 3.71676 12.5286 3.71676 12.952 4.4501L20.7462 17.9501C21.1696 18.6834 20.6403 19.6001 19.7936 19.6001H4.20511C3.35833 19.6001 2.82909 18.6834 3.25248 17.9501L11.0467 4.4501Z" fill="currentColor"/>
+</svg>
+        <span>此消费属于挑战禁止类别。已记一次违规——挑战继续，剩余天数照常完成。</span>
+      </div>
+      <div id="h-records" style="margin-top:6px;"></div>
+      <div class="actions" id="h-ended-actions" style="display:none;">
+        <button class="btn primary" id="h-goto-summary" style="flex:1;">查看本月总结</button>
+        <button class="btn" id="h-goto-new" style="flex:1;">开启下月挑战</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="cardhead">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.06 17.32C21.28 17.59 21.325 17.961 21.175 18.275C21.1003 18.4291 20.9836 18.559 20.8384 18.6497C20.6931 18.7405 20.5253 18.7884 20.354 18.788H15.822C15.6401 19.6667 15.1608 20.4558 14.465 21.0223C13.7692 21.5888 12.8993 21.8982 12.002 21.8982C11.1047 21.8982 10.2348 21.5888 9.53899 21.0223C8.84316 20.4558 8.3639 19.6667 8.182 18.788H3.784C3.63174 18.8138 3.47539 18.8001 3.33 18.748C3.15387 18.6867 3.00114 18.5721 2.89294 18.4202C2.78473 18.2683 2.7264 18.0865 2.726 17.9V17.888C2.7264 17.7648 2.75208 17.6431 2.80145 17.5302C2.85082 17.4174 2.92282 17.3159 3.013 17.232L3.259 16.934L3.26 16.932C4.163 15.828 4.683 14.372 4.683 12.852V9.674C4.723 7.645 5.457 5.729 6.76 4.287C8.071 2.826 9.841 2 11.732 2H12.27C16.27 2 19.33 5.643 19.33 9.861V13.044C19.377 14.498 19.886 15.875 20.743 16.935L20.745 16.937L21.06 17.32ZM8.12 5.483L8.117 5.486C7.124 6.584 6.537 8.077 6.502 9.7V12.85C6.502 14.317 6.12 15.75 5.414 16.987H18.594C17.9177 15.7851 17.5462 14.4357 17.512 13.057V9.86C17.512 6.403 15.046 3.799 12.27 3.799H11.732C10.396 3.799 9.109 4.378 8.12 5.483ZM13.949 18.787H10.055C10.2118 19.1749 10.4809 19.5072 10.8278 19.7412C11.1747 19.9751 11.5836 20.1001 12.002 20.1001C12.4204 20.1001 12.8293 19.9751 13.1762 19.7412C13.5231 19.5072 13.7922 19.1749 13.949 18.787Z" fill="currentColor"/>
+</svg>
+        <span>下一次放纵日</span>
+        <span class="spacer"></span>
+        <button class="linklike" id="h-cheat-edit">调整</button>
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <span class="big num" id="h-cheat-days">—</span>
+        <span class="meta" id="h-cheat-date" style="font-size:14px;"></span>
+      </div>
+      <div class="meta" style="margin-top:8px;line-height:1.6;" id="h-cheat-sub"></div>
+    </section>
+
+    <div class="grid4" id="h-today"></div>
+  </div>
+
+  <!-- 训练 -->
+  <div class="view" id="view-workout">
+    <h1>训练记录</h1>
+    <section class="card">
+      <div class="cardhead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.1001C6.53222 2.1001 2.09998 6.53234 2.09998 12.0001C2.09998 17.4679 6.53222 21.9001 12 21.9001C17.4677 21.9001 21.9 17.4679 21.9 12.0001C21.9 6.53234 17.4677 2.1001 12 2.1001ZM3.89998 12.0001C3.89998 7.52645 7.52633 3.9001 12 3.9001C16.4736 3.9001 20.1 7.52645 20.1 12.0001C20.1 16.4737 16.4736 20.1001 12 20.1001C7.52633 20.1001 3.89998 16.4737 3.89998 12.0001Z" fill="currentColor"/>
+<path d="M16.5364 10.4001C16.8879 10.7516 16.8879 11.3214 16.5364 11.6729C16.1849 12.0244 15.6151 12.0244 15.2636 11.6729L12.9 9.30933V16.3365C12.9 16.8335 12.4971 17.2365 12 17.2365C11.503 17.2365 11.1 16.8335 11.1 16.3365V9.30933L8.73641 11.6729C8.38494 12.0244 7.81509 12.0244 7.46362 11.6729C7.11214 11.3214 7.11214 10.7516 7.46362 10.4001L11.3636 6.50012C11.7151 6.14863 12.2849 6.14863 12.6364 6.50012L16.5364 10.4001Z" fill="currentColor"/>
+</svg><span>记一条</span><span class="spacer"></span><span class="meta" id="w-date"></span></div>
+      <div class="meta" style="margin:10px 0 6px;">部位</div>
+      <div class="chips" id="w-parts"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <input class="field" id="w-name" type="text" placeholder="动作，如 深蹲 / 卧推" style="flex:2;">
+        <input class="field num" id="w-weight" type="text" inputmode="decimal" placeholder="kg" style="flex:1;">
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        <input class="field num" id="w-sets" type="text" inputmode="numeric" placeholder="组数" style="flex:1;">
+        <input class="field num" id="w-reps" type="text" inputmode="numeric" placeholder="每组次数" style="flex:1;">
+        <input class="field" id="w-note" type="text" placeholder="备注（可空）" style="flex:2;">
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="w-save" style="flex:1;">记录这条</button>
+      </div>
+      <div class="meta" style="margin-top:8px;line-height:1.6;">保存后可直接继续记下一个动作，部位会保留。重量填 0 表示自重。</div>
+    </section>
+    <div class="statgrid" id="w-stats"></div>
+    <h1>最近记录</h1>
+    <div id="w-list"></div>
+  </div>
+
+  <!-- 历史 -->
+  <div class="view" id="view-history">
+    <h1>历史记录</h1>
+    <div class="statgrid" id="y-stats"></div>
+    <div style="position:relative;margin-bottom:12px;">
+      <span style="position:absolute;left:12px;top:11px;color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 40%,transparent);display:flex;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.5 3C16.1944 3 20 6.80558 20 11.5C20 13.523 19.2933 15.381 18.1132 16.8404L21.1364 19.8636C21.4879 20.2151 21.4879 20.7849 21.1364 21.1364C20.7849 21.4879 20.2151 21.4879 19.8636 21.1364L16.8404 18.1132C15.381 19.2933 13.523 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3ZM11.5 18.2C15.2003 18.2 18.2 15.2003 18.2 11.5C18.2 7.79969 15.2003 4.8 11.5 4.8C7.79969 4.8 4.8 7.79969 4.8 11.5C4.8 15.2003 7.79969 18.2 11.5 18.2Z" fill="currentColor"/>
+</svg></span>
+      <input class="field" id="y-q" type="search" placeholder="搜索备注…" style="padding-left:38px;">
+    </div>
+    <div class="chips" id="y-cats" style="margin-bottom:12px;">
+      <button class="chip on" data-f="all">全部</button>
+      <button class="chip" data-f="A">允许</button>
+      <button class="chip" data-f="B">禁止</button>
+      <button class="chip" data-f="S">特殊</button>
+      <button class="chip" data-f="V">忍住</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:4px;">
+      <select class="field num" id="y-year" style="flex:1;"></select>
+      <select class="field num" id="y-month" style="flex:1;"></select>
+    </div>
+    <div id="y-list"></div>
+  </div>
+
+  <!-- 总结 -->
+  <div class="view" id="view-summary">
+    <h1 id="s-title">月度总结</h1>
+    <section class="card" id="s-card"></section>
+    <div class="actions" id="s-actions">
+      <button class="btn primary" id="s-new" style="display:none;">开启下月挑战</button>
+    </div>
+    <h1 style="margin-top:24px;">历史挑战</h1>
+    <section class="card" id="s-history"></section>
+  </div>
+
+  <!-- 设置 -->
+  <div class="view" id="view-settings">
+    <h1>设置</h1>
+    <section class="card">
+      <div class="cardhead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.06 17.32C21.28 17.59 21.325 17.961 21.175 18.275C21.1003 18.4291 20.9836 18.559 20.8384 18.6497C20.6931 18.7405 20.5253 18.7884 20.354 18.788H15.822C15.6401 19.6667 15.1608 20.4558 14.465 21.0223C13.7692 21.5888 12.8993 21.8982 12.002 21.8982C11.1047 21.8982 10.2348 21.5888 9.53899 21.0223C8.84316 20.4558 8.3639 19.6667 8.182 18.788H3.784C3.63174 18.8138 3.47539 18.8001 3.33 18.748C3.15387 18.6867 3.00114 18.5721 2.89294 18.4202C2.78473 18.2683 2.7264 18.0865 2.726 17.9V17.888C2.7264 17.7648 2.75208 17.6431 2.80145 17.5302C2.85082 17.4174 2.92282 17.3159 3.013 17.232L3.259 16.934L3.26 16.932C4.163 15.828 4.683 14.372 4.683 12.852V9.674C4.723 7.645 5.457 5.729 6.76 4.287C8.071 2.826 9.841 2 11.732 2H12.27C16.27 2 19.33 5.643 19.33 9.861V13.044C19.377 14.498 19.886 15.875 20.743 16.935L20.745 16.937L21.06 17.32ZM8.12 5.483L8.117 5.486C7.124 6.584 6.537 8.077 6.502 9.7V12.85C6.502 14.317 6.12 15.75 5.414 16.987H18.594C17.9177 15.7851 17.5462 14.4357 17.512 13.057V9.86C17.512 6.403 15.046 3.799 12.27 3.799H11.732C10.396 3.799 9.109 4.378 8.12 5.483ZM13.949 18.787H10.055C10.2118 19.1749 10.4809 19.5072 10.8278 19.7412C11.1747 19.9751 11.5836 20.1001 12.002 20.1001C12.4204 20.1001 12.8293 19.9751 13.1762 19.7412C13.5231 19.5072 13.7922 19.1749 13.949 18.787Z" fill="currentColor"/>
+</svg><span>放纵日</span></div>
+      <div style="margin-top:12px;">
+        <div class="meta" style="margin-bottom:6px;">下一次放纵日</div>
+        <input class="field num" id="g-anchor" type="date">
+      </div>
+      <div style="margin-top:12px;">
+        <div class="meta" style="margin-bottom:6px;">周期（每隔多少天一次）</div>
+        <input class="field num" id="g-cycle" type="text" inputmode="numeric" value="14">
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="g-cheat-save" style="flex:1;">保存放纵日设置</button>
+        <button class="btn" id="g-cheat-today">今天就是放纵日</button>
+      </div>
+      <div class="meta" style="margin-top:10px;line-height:1.6;">保存后系统自动按周期推算以后的每一次放纵日。社交安排变了，就回来改「下一次放纵日」。</div>
+    </section>
+
+    <section class="card">
+      <div class="cardhead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.05176 5.80851C9.05182 3.40834 11.8738 2.12034 13.6865 3.69328L20.8223 9.88761C22.096 10.9932 22.1109 12.9657 20.8535 14.0898L13.7178 20.4687C11.9138 22.0813 9.05176 20.8005 9.05176 18.3808V16.2909C8.2781 16.3437 7.66169 16.4514 7.10254 16.6503C6.38481 16.9056 5.65113 17.3526 4.79102 18.2382C4.28046 18.7639 3.50231 18.9277 2.82324 18.6523C2.14426 18.3767 1.7002 17.7171 1.7002 16.9843C1.70023 14.6724 2.26648 12.5077 3.66309 10.8456C4.95815 9.30449 6.8038 8.39034 9.05176 8.0839V5.80851ZM12.5068 5.05265C11.8594 4.49104 10.8516 4.95139 10.8516 5.80851V8.76652L10.8457 8.86808C10.7944 9.37188 10.3675 9.76305 9.85156 9.80558L9.44922 9.8466C5.37063 10.3374 3.50006 13.0427 3.5 16.9843C5.53883 14.885 7.34201 14.5134 9.85059 14.456C10.4027 14.4433 10.8515 14.894 10.8516 15.4462V18.3808C10.8516 19.1908 11.7494 19.6434 12.3926 19.2226L12.5176 19.1269L19.6533 12.747C20.0743 12.3706 20.0964 11.7283 19.7227 11.3241L19.6426 11.247L12.5068 5.05265Z" fill="currentColor"/>
+</svg><span>数据备份</span></div>
+      <div class="meta" style="margin-top:10px;line-height:1.6;">所有数据（消费、忍住、训练、放纵日设置）都存在这台手机的 Safari 里。定期导出一次，换手机或误清数据时不会丢。</div>
+      <div class="actions">
+        <button class="btn primary" id="g-export" style="flex:1;">导出全部数据</button>
+      </div>
+      <details style="margin-top:10px;">
+        <summary class="linklike" style="font-size:13px;">从备份恢复（粘贴 JSON）</summary>
+        <textarea class="field" id="g-import" placeholder='粘贴之前导出的 JSON…' style="margin-top:8px;"></textarea>
+        <div class="actions"><button class="btn" id="g-import-btn">确认恢复（覆盖现有数据）</button></div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="cardhead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.09998 5.99998C4.09998 5.50292 4.50292 5.09998 4.99998 5.09998H19C19.497 5.09998 19.9 5.50292 19.9 5.99998C19.9 6.49703 19.497 6.89998 19 6.89998H4.99998C4.50292 6.89998 4.09998 6.49703 4.09998 5.99998ZM4.09998 12C4.09998 11.5029 4.50292 11.1 4.99998 11.1H13C13.497 11.1 13.9 11.5029 13.9 12C13.9 12.497 13.497 12.9 13 12.9H4.99998C4.50292 12.9 4.09998 12.497 4.09998 12ZM4.09998 18C4.09998 17.5029 4.50292 17.1 4.99998 17.1H13C13.497 17.1 13.9 17.5029 13.9 18C13.9 18.497 13.497 18.9 13 18.9H4.99998C4.50292 18.9 4.09998 18.497 4.09998 18Z" fill="currentColor"/>
+</svg><span>固定规则</span></div>
+      <div class="rule" style="margin-top:10px;">
+        A 类 · 挑战内允许：必需生活支出；已确定的健身必要支出；已确定的固定支出。<br><br>
+        B 类 · 挑战禁止：冲动型非必要消费。「现在特别想要」不构成豁免。<br><br>
+        特殊事件：临时社交、家庭事件、医疗等必须发生的现实支出，留痕但不计违规。<br><br>
+        违规不终止挑战；已记录的数据不可修改、不可删除。
+      </div>
+    </section>
+    <div class="meta" style="text-align:center;margin-top:16px;">自律挑战 v3 · 数据只存在本机</div>
+  </div>
+
+</div>
+
+<!-- 底部导航 -->
+<nav class="tabbar">
+  <button class="tab on" data-view="view-home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.3994 12.4863C12.396 10.8789 14.2659 9.99419 15.5068 11.0156L21.3887 15.8594C22.6251 16.8787 22.1145 18.8522 20.5918 19.1816L20.4404 19.207L17.6953 19.5889C17.6853 19.5903 17.675 19.5934 17.666 19.5977L17.6416 19.6143L15.6055 21.4961L15.4902 21.5957C14.3092 22.5333 12.5401 21.7604 12.4238 20.2568L12.417 20.1045L12.3994 12.4863ZM14.2568 12.3916C14.2298 12.4044 14.2145 12.4205 14.209 12.4287C14.2068 12.4321 14.2055 12.4358 14.2041 12.4404C14.2028 12.4447 14.1992 12.4578 14.1992 12.4824L14.2168 20.0996L14.2227 20.1445C14.2241 20.149 14.2254 20.1522 14.2275 20.1553C14.2329 20.1629 14.2486 20.1788 14.2773 20.1914C14.3063 20.204 14.329 20.2044 14.3379 20.2031C14.3414 20.2026 14.3446 20.2011 14.3486 20.1992C14.3527 20.1972 14.3649 20.1912 14.3838 20.1738L16.4199 18.292L16.5156 18.2041L16.623 18.1299L16.6475 18.1133L16.7646 18.0342L16.8916 17.9727C17.104 17.8715 17.3 17.827 17.4443 17.8066H17.4473L20.1475 17.4307L20.2217 17.417C20.231 17.4143 20.2373 17.4141 20.2393 17.4131C20.2419 17.4115 20.2448 17.4086 20.248 17.4053C20.2562 17.3968 20.27 17.378 20.2773 17.3486C20.2846 17.3193 20.2817 17.298 20.2793 17.29C20.2783 17.2869 20.2761 17.2833 20.2734 17.2793C20.2707 17.2752 20.2631 17.2637 20.2441 17.248V17.249L14.3623 12.4053C14.3434 12.3898 14.3313 12.3836 14.3271 12.3818C14.323 12.3802 14.3192 12.3793 14.3154 12.3789C14.3054 12.378 14.2834 12.3791 14.2568 12.3916ZM18.6797 2.00488C20.5292 2.09842 22 3.62727 22 5.5L21.9951 13H20.2002V9H3.7998V16C3.7998 16.9389 4.56112 17.7002 5.5 17.7002H11V19.5H5.5L5.32031 19.4951C3.53035 19.4046 2.09541 17.9697 2.00488 16.1797L2 16V5.5C2 3.62727 3.47083 2.09842 5.32031 2.00488L5.5 2H18.5L18.6797 2.00488ZM5.5 3.7998C4.61979 3.7998 3.89565 4.46893 3.80859 5.32617L3.7998 5.5V7.2002H20.2002V5.5C20.2002 4.61979 19.5311 3.89565 18.6738 3.80859L18.5 3.7998H5.5ZM7.3916 4.60449C7.84564 4.65038 8.2002 5.03386 8.2002 5.5C8.2002 5.96614 7.84564 6.34962 7.3916 6.39551L7.2998 6.40039H5.5C5.00294 6.40039 4.59961 5.99706 4.59961 5.5C4.59961 5.00294 5.00294 4.59961 5.5 4.59961H7.2998L7.3916 4.60449Z" fill="currentColor"/>
+</svg><span>首页</span></button>
+  <button class="tab" data-view="view-workout"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.1001C6.53222 2.1001 2.09998 6.53234 2.09998 12.0001C2.09998 17.4679 6.53222 21.9001 12 21.9001C17.4677 21.9001 21.9 17.4679 21.9 12.0001C21.9 6.53234 17.4677 2.1001 12 2.1001ZM3.89998 12.0001C3.89998 7.52645 7.52633 3.9001 12 3.9001C16.4736 3.9001 20.1 7.52645 20.1 12.0001C20.1 16.4737 16.4736 20.1001 12 20.1001C7.52633 20.1001 3.89998 16.4737 3.89998 12.0001Z" fill="currentColor"/>
+<path d="M16.5364 10.4001C16.8879 10.7516 16.8879 11.3214 16.5364 11.6729C16.1849 12.0244 15.6151 12.0244 15.2636 11.6729L12.9 9.30933V16.3365C12.9 16.8335 12.4971 17.2365 12 17.2365C11.503 17.2365 11.1 16.8335 11.1 16.3365V9.30933L8.73641 11.6729C8.38494 12.0244 7.81509 12.0244 7.46362 11.6729C7.11214 11.3214 7.11214 10.7516 7.46362 10.4001L11.3636 6.50012C11.7151 6.14863 12.2849 6.14863 12.6364 6.50012L16.5364 10.4001Z" fill="currentColor"/>
+</svg><span>训练</span></button>
+  <button class="tab" data-view="view-history"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.8999 6.79965C12.397 6.79965 12.7997 7.20235 12.7997 7.69941V11.7266L14.7359 13.6629C15.0873 14.0143 15.0879 14.584 14.7366 14.9355C14.3852 15.287 13.8148 15.287 13.4633 14.9355L11.2632 12.7355C11.0947 12.5668 11.0002 12.338 11.0001 12.0995V7.69941C11.0001 7.20238 11.4029 6.7997 11.8999 6.79965Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.89893C17.4677 1.89893 21.9001 6.33147 21.9002 11.7991C21.9002 17.2669 17.4678 21.6993 12 21.6993C6.53228 21.6993 2.09985 17.2669 2.09985 11.7991C2.09998 6.33147 6.53236 1.89893 12 1.89893ZM20.1 11.7998C20.1 7.32616 16.4737 3.69984 12 3.69984C7.5264 3.69984 3.90008 7.32616 3.90008 11.7998C3.90032 16.2732 7.52655 19.8998 12 19.8998C16.4735 19.8998 20.0998 16.2732 20.1 11.7998Z" fill="currentColor"/>
+</svg><span>历史</span></button>
+  <button class="tab" data-view="view-summary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 3.08496C4.55224 3.08496 4.99993 3.53273 5 4.08496V18.0361H19.9941L20.0967 18.041C20.6008 18.0923 20.9941 18.5185 20.9941 19.0361C20.9941 19.5538 20.6008 19.9799 20.0967 20.0312L19.9941 20.0361H5C3.89546 20.0361 3.00005 19.1407 3 18.0361V4.08496C3.00007 3.53273 3.44776 3.08496 4 3.08496ZM18.2627 6.5166C18.6316 6.10561 19.2638 6.07157 19.6748 6.44043C20.0858 6.80932 20.1198 7.44153 19.751 7.85254L15.8682 12.1787C15.1552 12.9731 13.9437 13.0678 13.1162 12.3936L10.9121 10.5967L7.45117 14.6602C7.09308 15.0805 6.46145 15.1315 6.04102 14.7734C5.6206 14.4153 5.56969 13.7837 5.92773 13.3633L9.38965 9.2998C10.0949 8.47222 11.3318 8.36 12.1748 9.04688L14.3799 10.8428L18.2627 6.5166Z" fill="currentColor"/>
+</svg><span>总结</span></button>
+  <button class="tab" data-view="view-settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.0404 12C16.0404 9.76874 14.2313 7.9596 12.0001 7.9596C9.76883 7.9596 7.95972 9.76874 7.95972 12C7.95972 14.2313 9.76883 16.0404 12.0001 16.0404C14.2313 16.0404 16.0404 14.2313 16.0404 12ZM14.2222 12C14.2222 13.2271 13.2271 14.2222 12 14.2222C10.7729 14.2222 9.77783 13.2271 9.77783 12C9.77783 10.7729 10.7729 9.77778 12 9.77778C13.2271 9.77778 14.2222 10.7729 14.2222 12Z" fill="currentColor"/>
+<path d="M9.91145 21.8009C9.29001 21.6797 8.76914 21.2612 8.50632 20.6922L8.07372 19.7556C7.88838 19.3544 7.43553 19.1048 6.95371 19.1549L5.89572 19.2647C5.2733 19.3293 4.64823 19.114 4.22298 18.6611C3.74343 18.1504 3.32454 17.6037 2.97033 17.0181C2.61571 16.4318 2.32839 15.8106 2.10407 15.1566C1.89769 14.5549 2.02148 13.8954 2.4089 13.3902L3.0376 12.5704C3.30043 12.2277 3.30042 11.7722 3.03758 11.4295L2.40413 10.6035C2.01474 10.0958 1.891 9.43198 2.10208 8.82826C2.55037 7.54612 3.27017 6.35997 4.22 5.34259C4.64518 4.8872 5.27275 4.67067 5.89701 4.73544L6.95383 4.84514C7.43561 4.89515 7.88844 4.6456 8.07377 4.24441L8.50266 3.31593C8.76494 2.74818 9.28448 2.33019 9.90423 2.20761C11.2916 1.9332 12.7148 1.93127 14.0885 2.19913C14.7099 2.32029 15.2308 2.73881 15.4937 3.3078L15.9263 4.24441C16.1116 4.6456 16.5644 4.89514 17.0462 4.84514L18.1043 4.73532C18.7267 4.67072 19.3518 4.88603 19.777 5.33886C20.2566 5.84953 20.6755 6.3963 21.0297 6.98193C21.3843 7.56823 21.6716 8.18942 21.8959 8.84339C22.1023 9.44509 21.9785 10.1046 21.5911 10.6098L20.9624 11.4295C20.6996 11.7722 20.6996 12.2278 20.9624 12.5705L21.5959 13.3964C21.9853 13.9042 22.109 14.568 21.8979 15.1717C21.4497 16.4538 20.7299 17.6399 19.7801 18.6573C19.3549 19.1128 18.7273 19.3294 18.103 19.2646L17.0462 19.1549C16.5645 19.1049 16.1116 19.3544 15.9263 19.7556L15.4974 20.6841C15.2351 21.2518 14.7156 21.6698 14.0958 21.7924C12.7083 22.0668 11.2852 22.0687 9.91145 21.8009ZM13.7432 20.0088C13.7844 20.0006 13.8259 19.9673 13.847 19.9216L14.2758 18.9931C14.7915 17.8768 15.9886 17.2171 17.2341 17.3464L18.2909 17.4561C18.3649 17.4638 18.4272 17.4423 18.4512 17.4166C19.2296 16.5828 19.8171 15.6146 20.1817 14.5716C20.1845 14.5636 20.1796 14.5373 20.1532 14.5029L19.5198 13.677C18.7564 12.6815 18.7564 11.3185 19.5198 10.323L20.1485 9.5033C20.1746 9.46927 20.1795 9.4429 20.1762 9.43327C19.9932 8.89965 19.7603 8.39623 19.4741 7.92293C19.1873 7.4489 18.846 7.00333 18.4517 6.58351C18.4272 6.55739 18.3656 6.53616 18.2921 6.54378L17.234 6.65361C15.9886 6.78287 14.7915 6.12317 14.2758 5.00689L13.8432 4.07027C13.822 4.02448 13.7811 3.9916 13.7406 3.98371C12.5983 3.76097 11.4132 3.76258 10.2571 3.99124C10.2158 3.99941 10.1744 4.03271 10.1533 4.07842L9.72441 5.00689C9.20875 6.12317 8.01164 6.7829 6.76619 6.6536L5.70942 6.54391C5.63535 6.53623 5.573 6.55774 5.54905 6.5834C4.77067 7.41713 4.18312 8.38534 3.81845 9.42835C3.81564 9.43637 3.82054 9.46265 3.84693 9.49706L4.48038 10.323C5.24381 11.3185 5.24383 12.6815 4.48041 13.6769L3.85171 14.4967C3.82561 14.5307 3.82066 14.5571 3.82396 14.5667C4.00701 15.1004 4.23986 15.6038 4.52613 16.0771C4.81284 16.5511 5.15421 16.9967 5.54845 17.4165C5.57298 17.4426 5.63461 17.4638 5.70811 17.4562L6.76608 17.3464C8.01157 17.2171 9.20871 17.8768 9.72438 18.9932L10.157 19.9297C10.1781 19.9755 10.2191 20.0084 10.2595 20.0163C11.4018 20.239 12.587 20.2374 13.7432 20.0088Z" fill="currentColor"/>
+</svg><span>设置</span></button>
+</nav>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s);};
+  var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+  var KEY='scd_v3';
+  var DAY=86400000;
+  function load(){ try{var v=localStorage.getItem(KEY); if(v)return JSON.parse(v);}catch(e){} return null; }
+  function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
+  function sod(d){var x=new Date(d);x.setHours(0,0,0,0);return x;}
+  function pad(n){return (n<10?'0':'')+n;}
+  function money(n){return '¥'+Number(n).toLocaleString('zh-CN',{maximumFractionDigits:2});}
+  function dstr(ts){var d=new Date(ts);return (d.getMonth()+1)+'月'+d.getDate()+'日';}
+  function ymd(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* ---- toast & 按钮反馈 ---- */
+  var toastTimer=null;
+  function toast(msg){
+    var t=$('#toast'); t.textContent=msg; t.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){t.classList.remove('on');},2000);
+  }
+  function flashBtn(btn,txt){
+    var old=btn.textContent;
+    btn.classList.add('flash'); btn.disabled=true; btn.textContent=txt||'已保存 ✓';
+    setTimeout(function(){btn.classList.remove('flash');btn.disabled=false;btn.textContent=old;},1500);
+  }
+
+  var S = load();
+  if (!S) S = { v:3, ch:null, records:[], workouts:[], archives:[], settings:{cycle:14, anchor:'2026-09-23'} };
+  if (!S.ch){
+    S.ch = { id:'2026-09', title:'9月消费挑战', start:'2026-09-01', end:'2026-09-30', budget:3000, archived:false, train:'背' };
+  }
+  // v1 迁移：logs/avoided -> records
+  if (S.ch.logs || S.ch.avoided){
+    (S.ch.logs||[]).forEach(function(l){ S.records.push({id:'m'+l.t+Math.random().toString(36).slice(2,6), ts:l.t, type:l.cat, amt:l.amt, note:l.note}); });
+    (S.ch.avoided||[]).forEach(function(a){ S.records.push({id:'m'+a.t+Math.random().toString(36).slice(2,6), ts:a.t, type:'V', amt:a.amt, note:a.note}); });
+    delete S.ch.logs; delete S.ch.avoided; delete S.ch.spent; delete S.ch.fast;
+  }
+  S.records = S.records || [];
+  S.workouts = S.workouts || [];
+  S.archives = S.archives || [];
+  S.settings = S.settings || {cycle:14, anchor:'2026-09-23'};
+  S.v=3; save();
+  var C = S.ch;
+
+  var IC = {
+    A:'<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--kimi-color-positive,#0a7d3b);"><path d="M19.3027 5.9053C19.6542 5.55397 20.2247 5.55388 20.5761 5.9053C20.9273 6.25675 20.9273 6.82734 20.5761 7.17874L9.65911 18.0948C9.30773 18.4461 8.73814 18.446 8.38665 18.0948L3.42376 13.1328C3.07242 12.7814 3.07242 12.2109 3.42376 11.8596C3.77517 11.5082 4.34571 11.5083 4.69706 11.8596L9.02288 16.1854L19.3027 5.9053Z" fill="currentColor"/></svg>',
+    B:'<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--kimi-color-warning,#c77700);"><path d="M20.0996 12C20.0996 7.52636 16.4736 3.90039 12 3.90039C7.52636 3.90039 3.90039 7.52636 3.90039 12C3.90039 16.4736 7.52636 20.0996 12 20.0996C16.4736 20.0996 20.0996 16.4736 20.0996 12ZM21.9004 12C21.9004 17.4681 17.4681 21.9004 12 21.9004C6.53186 21.9004 2.09961 17.4681 2.09961 12C2.09961 6.53186 6.53186 2.09961 12 2.09961C17.4681 2.09961 21.9004 6.53186 21.9004 12ZM6.03424 8.09088C5.74218 7.79883 5.74218 7.32687 6.03424 7.03482C6.32629 6.74277 6.79825 6.74277 7.0903 7.03482L17.9655 17.91C18.2576 18.2021 18.2576 18.674 17.9655 18.9661C17.6734 19.2581 17.2015 19.2581 16.9094 18.9661L6.03424 8.09088Z" fill="currentColor"/></svg>',
+    S:'<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:color-mix(in srgb,var(--kimi-color-text-primary,#1a1a1a) 55%,transparent);"><path d="M12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9Z" fill="currentColor"/></svg>',
+    V:'<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--kimi-color-accent,#2f6bff);"><path d="M12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9Z" fill="currentColor"/></svg>'
+  };
+  var TYPENAME = {A:'允许', B:'禁止', S:'特殊', V:'忍住'};
+
+  /* ---- 挑战基础 ---- */
+  var cStart=sod(new Date(C.start)), cEnd=sod(new Date(C.end));
+  var total=Math.round((cEnd-cStart)/DAY)+1;
+  function dayNo(){var t=sod(new Date());return Math.min(total,Math.max(1,Math.round((t-cStart)/DAY)+1));}
+  function isEnded(){return sod(new Date())>cEnd;}
+  function inWindow(ts){return ts>=cStart.getTime() && ts<cEnd.getTime()+DAY;}
+  function curSpend(){return S.records.filter(function(r){return inWindow(r.ts)&&r.type!=='V';}).reduce(function(a,r){return a+r.amt;},0);}
+  function curVio(){return S.records.filter(function(r){return inWindow(r.ts)&&r.type==='B';});}
+  function curAvoid(){return S.records.filter(function(r){return inWindow(r.ts)&&r.type==='V';});}
+  function wInWindow(ts){return ts>=cStart.getTime() && ts<cEnd.getTime()+DAY;}
+  function workoutDays(){var days={};S.workouts.forEach(function(w){if(wInWindow(w.ts))days[sod(new Date(w.ts)).getTime()]=1;});return Object.keys(days).length;}
+
+  function maybeArchive(){
+    if (isEnded() && !C.archived){
+      var days={}, vl=curVio();
+      vl.forEach(function(l){ days[sod(new Date(l.ts)).getTime()]=1; });
+      var rate=Math.round((total-Object.keys(days).length)/total*100);
+      var outSum=vl.reduce(function(a,b){return a+b.amt;},0)+S.records.filter(function(r){return inWindow(r.ts)&&r.type==='S';}).reduce(function(a,b){return a+b.amt;},0);
+      S.archives.push({ id:C.id, title:C.title, days:total, spent:curSpend(), out:outSum, rate:rate, vio:vl.length, avoided:curAvoid().length, avoidedSum:curAvoid().reduce(function(a,b){return a+b.amt;},0), wdays:workoutDays() });
+      C.archived=true; save();
+    }
+  }
+
+  function addRecord(type, amt, note){
+    S.records.push({id:'r'+Date.now()+Math.random().toString(36).slice(2,6), ts:Date.now(), type:type, amt:Math.round(amt*100)/100, note:note});
+    save();
+  }
+
+  /* ---- 视图切换 ---- */
+  function show(v){
+    $$('.view').forEach(function(el){el.classList.toggle('on', el.id===v);});
+    $$('.tab').forEach(function(t){t.classList.toggle('on', t.dataset.view===v);});
+    window.scrollTo(0,0);
+    if (v==='view-workout') renderWorkout();
+    if (v==='view-history') renderHistory();
+    if (v==='view-summary') renderSummary();
+    if (v==='view-settings') renderSettings();
+  }
+  $$('.tab').forEach(function(t){ t.onclick=function(){ show(t.dataset.view); }; });
+
+  /* ---- 首页 ---- */
+  function renderHome(){
+    maybeArchive();
+    var spent=curSpend();
+    $('#h-title').textContent=C.title;
+    $('#h-range').textContent=C.start.replace(/-/g,'/')+' – '+C.end.replace(/-/g,'/');
+    $('#h-day').textContent='第 '+dayNo()+' / '+total+' 天';
+    $('#h-spent').textContent=money(spent);
+    $('#h-budget').textContent='/ '+money(C.budget);
+    var pct=Math.min(100,spent/C.budget*100);
+    var bar=$('#h-bar');
+    bar.style.width=pct+'%';
+    bar.style.background=spent>C.budget?'var(--kimi-color-danger,#c2402a)':(pct>=80?'var(--kimi-color-warning,#c77700)':'var(--kimi-color-text-primary,#1a1a1a)');
+    $('#h-left').textContent='剩余 '+money(Math.max(0,C.budget-spent))+(spent>C.budget?'（已超支）':'');
+    var v=curVio().length, av=curAvoid();
+    var hv=$('#h-vio');
+    hv.textContent='违规 '+v+' 次 · 忍住 '+av.length+' 次'+(av.length?'（'+money(av.reduce(function(a,b){return a+b.amt;},0))+'）':'');
+    hv.style.color=v>0?'var(--kimi-color-warning,#c77700)':'';
+    var stt=$('#h-status-t');
+    if (isEnded()){ stt.textContent='已结束'; $('#h-status').classList.add('off'); } else { stt.textContent='进行中'; $('#h-status').classList.remove('off'); }
+    $('#h-ended-actions').style.display=isEnded()?'flex':'none';
+
+    var rec=$('#h-records'); rec.innerHTML='';
+    S.records.filter(function(r){return inWindow(r.ts);}).slice(-5).reverse().forEach(function(l){ rec.appendChild(recRow(l)); });
+
+    var ci=cheatInfo();
+    if (ci.left===0){ $('#h-cheat-days').textContent='今天'; $('#h-cheat-date').textContent='就是放纵日 · 自由安排，不必吃到撑'; }
+    else { $('#h-cheat-days').textContent=ci.left+' 天'; $('#h-cheat-date').textContent=(ci.next.getMonth()+1)+'月'+ci.next.getDate()+'日 · 每 '+S.settings.cycle+' 天一次'; }
+    $('#h-cheat-sub').textContent='非放纵日控制总量与冲动性进食；日期和周期在「设置」里自己定。';
+
+    renderToday(ci.left===0);
+  }
+  function recRow(l){
+    var row=document.createElement('div'); row.className='rec';
+    var name=l.note?esc(l.note):(l.type==='B'?'挑战禁止消费':l.type==='S'?'特殊事件':l.type==='V'?'忍住没买':'挑战内消费');
+    var amtHtml = l.type==='V' ? '<span class="acc num">忍住 '+money(l.amt)+'</span>' : '<span class="mut num">'+money(l.amt)+'</span>';
+    row.innerHTML=IC[l.type]+'<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+name+'</span><span class="meta">'+TYPENAME[l.type]+' · '+dstr(l.ts)+'</span>'+amtHtml;
+    return row;
+  }
+
+  function cheatInfo(){
+    var cycle=Math.max(1, parseInt(S.settings.cycle,10)||14);
+    var anchor=sod(new Date(S.settings.anchor+'T00:00:00'));
+    var today=sod(new Date());
+    var diff=Math.floor((anchor-today)/DAY);
+    var k=Math.floor(diff/cycle);
+    var next=new Date(anchor); next.setDate(next.getDate()-k*cycle);
+    if (next<today) next.setDate(next.getDate()+cycle);
+    return {next:next, left:Math.round((next-today)/DAY), cycle:cycle};
+  }
+
+  var TRAIN=['背','肩','腿','休息'];
+  function renderToday(isCheat){
+    var v=curVio().length;
+    var todayTs=sod(new Date()).getTime();
+    var tw=S.workouts.filter(function(w){return sod(new Date(w.ts)).getTime()===todayTs;});
+    var tv=tw.length? tw.map(function(w){return w.part;}).filter(function(p,i,a){return a.indexOf(p)===i;}).join('·') : '未练';
+    var cells=[
+      {k:'训练',v:tv,click:true},
+      {k:'饮食',v:isCheat?'放纵日':'正常日'},
+      {k:'消费',v:v>0?v+' 次违规':'正常',cls:v>0?'warn':''},
+      {k:'挑战',v:isEnded()?'已结束':'进行中',cls:isEnded()?'mut':'pos'}
+    ];
+    var g=$('#h-today'); g.innerHTML='';
+    cells.forEach(function(c){
+      var d=document.createElement('div'); d.className='cell';
+      d.innerHTML='<div class="k">'+c.k+'</div><div class="v'+(c.click?' click':'')+(c.cls?' '+c.cls:'')+'">'+c.v+'</div>';
+      if (c.click) d.querySelector('.v').onclick=function(){ show('view-workout'); setTimeout(function(){$('#w-name').focus();},150); };
+      g.appendChild(d);
+    });
+  }
+
+  /* ---- 记一笔 ---- */
+  var picked='A';
+  $('#h-add-toggle').onclick=function(){$('#h-form').classList.add('open');$('#h-avoidform').classList.remove('open');$('#h-amt').focus();};
+  $('#h-cancel').onclick=function(){$('#h-form').classList.remove('open');};
+  $('#h-cats').addEventListener('click',function(e){
+    var b=e.target.closest('.chip'); if(!b)return;
+    picked=b.dataset.cat;
+    this.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',c===b);});
+  });
+  $('#h-confirm').onclick=function(){
+    var amt=parseFloat($('#h-amt').value);
+    if(!(amt>0)){toast('请输入有效金额');$('#h-amt').focus();return;}
+    addRecord(picked, amt, $('#h-note').value.trim());
+    $('#h-amt').value='';$('#h-note').value='';
+    $('#h-form').classList.remove('open');
+    renderHome();
+    flashBtn(this,'已记录 ✓');
+    if (picked==='B'){
+      var bn=$('#h-banner'); bn.style.display='flex';
+      setTimeout(function(){bn.style.display='none';},4000);
+    }
+  };
+  $('#h-avoid-toggle').onclick=function(){$('#h-avoidform').classList.add('open');$('#h-form').classList.remove('open');$('#h-avoid-note').focus();};
+  $('#h-avoid-cancel').onclick=function(){$('#h-avoidform').classList.remove('open');};
+  $('#h-avoid-confirm').onclick=function(){
+    var amt=parseFloat($('#h-avoid-amt').value);
+    if(!(amt>0)){toast('请输入有效金额');$('#h-avoid-amt').focus();return;}
+    addRecord('V', amt, $('#h-avoid-note').value.trim());
+    $('#h-avoid-amt').value='';$('#h-avoid-note').value='';
+    $('#h-avoidform').classList.remove('open');
+    renderHome();
+    flashBtn(this,'已记录 ✓');
+  };
+
+  /* ---- 训练 ---- */
+  var PARTS=['胸','背','肩','腿','手臂','核心','有氧','其他'];
+  var wPicked='背';
+  function renderWorkout(){
+    $('#w-date').textContent=ymd(new Date()).replace(/-/g,'/');
+    var pbox=$('#w-parts'); pbox.innerHTML='';
+    PARTS.forEach(function(p){
+      var b=document.createElement('button'); b.className='chip'+(p===wPicked?' on':''); b.textContent=p;
+      b.onclick=function(){ wPicked=p; renderWorkout(); };
+      pbox.appendChild(b);
+    });
+    var now=Date.now(), nowD=new Date();
+    var week={},month={},parts={};
+    S.workouts.forEach(function(w){
+      if (now-w.ts<7*DAY) week[sod(new Date(w.ts)).getTime()]=1;
+      var d=new Date(w.ts);
+      if (d.getFullYear()===nowD.getFullYear()&&d.getMonth()===nowD.getMonth()) month[sod(d).getTime()]=1;
+      parts[w.part]=(parts[w.part]||0)+1;
+    });
+    var top=Object.keys(parts).sort(function(a,b){return parts[b]-parts[a];})[0]||'—';
+    $('#w-stats').innerHTML=
+      stat('近 7 天训练', Object.keys(week).length+' 天')+
+      stat('本月训练', Object.keys(month).length+' 天')+
+      stat('累计动作记录', S.workouts.length+' 条')+
+      stat('最常练部位', top);
+
+    var list=S.workouts.slice().sort(function(a,b){return b.ts-a.ts;}).slice(0,60);
+    var box=$('#w-list'); box.innerHTML='';
+    if (!list.length){ box.innerHTML='<div class="mut" style="padding:24px 0;text-align:center;">还没有训练记录，记一条吧</div>'; return; }
+    var lastKey=null;
+    list.forEach(function(w){
+      var d=new Date(w.ts);
+      var key=d.getFullYear()+'年'+(d.getMonth()+1)+'月';
+      if (key!==lastKey){ var gt=document.createElement('div'); gt.className='grouptitle'; gt.textContent=key; box.appendChild(gt); lastKey=key; }
+      var row=document.createElement('div'); row.className='rec';
+      var nums=(w.weight>0?w.weight+'kg':'自重')+' × '+w.sets+'组 × '+w.reps+'次';
+      row.innerHTML='<span class="pos" style="font-size:12px;border:1px solid color-mix(in srgb,var(--kimi-color-positive,#0a7d3b) 40%,transparent);border-radius:6px;padding:1px 6px;">'+esc(w.part)+'</span>'
+        +'<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+esc(w.name)+(w.note?' <span class="meta">'+esc(w.note)+'</span>':'')+'</span>'
+        +'<span class="mut num">'+dstr(w.ts)+' · '+nums+'</span>';
+      box.appendChild(row);
+    });
+    if (S.workouts.length>60){
+      var more=document.createElement('div'); more.className='meta'; more.style.textAlign='center'; more.style.margin='12px 0';
+      more.textContent='仅显示最近 60 条，完整数据在导出文件里'; box.appendChild(more);
+    }
+  }
+  function stat(k,v){ return '<div class="stat"><div class="k">'+k+'</div><div class="v num">'+v+'</div></div>'; }
+  $('#w-save').onclick=function(){
+    var name=$('#w-name').value.trim();
+    if(!name){toast('填一下动作名称');$('#w-name').focus();return;}
+    var weight=parseFloat($('#w-weight').value);
+    var sets=parseInt($('#w-sets').value,10);
+    var reps=parseInt($('#w-reps').value,10);
+    if(isNaN(weight)||weight<0){toast('重量填数字（自重填 0）');$('#w-weight').focus();return;}
+    if(!(sets>0)||!(reps>0)){toast('组数和次数都要大于 0');return;}
+    S.workouts.push({id:'w'+Date.now()+Math.random().toString(36).slice(2,6), ts:Date.now(), part:wPicked, name:name, weight:weight, sets:sets, reps:reps, note:$('#w-note').value.trim()});
+    save();
+    $('#w-name').value='';$('#w-weight').value='';$('#w-sets').value='';$('#w-reps').value='';$('#w-note').value='';
+    renderWorkout(); renderToday(cheatInfo().left===0);
+    flashBtn(this,'已记录 ✓');
+    setTimeout(function(){$('#w-name').focus();},200);
+  };
+
+  /* ---- 历史 ---- */
+  var yFilter={f:'all', q:'', year:'all', month:'all'};
+  function buildYearMonth(){
+    var ys={};
+    S.records.forEach(function(r){ var d=new Date(r.ts); ys[d.getFullYear()]=1; });
+    var ysel=$('#y-year'); ysel.innerHTML='<option value="all">全部年份</option>';
+    Object.keys(ys).sort().reverse().forEach(function(y){ var o=document.createElement('option'); o.value=y; o.textContent=y+' 年'; ysel.appendChild(o); });
+    var msel=$('#y-month'); msel.innerHTML='<option value="all">全部月份</option>';
+    for (var m=1;m<=12;m++){ var o=document.createElement('option'); o.value=m; o.textContent=m+' 月'; msel.appendChild(o); }
+    ysel.value=yFilter.year; msel.value=yFilter.month;
+  }
+  function renderHistory(){
+    buildYearMonth();
+    var list=S.records.filter(function(r){
+      if (yFilter.f!=='all' && r.type!==yFilter.f) return false;
+      var d=new Date(r.ts);
+      if (yFilter.year!=='all' && d.getFullYear()!==Number(yFilter.year)) return false;
+      if (yFilter.month!=='all' && (d.getMonth()+1)!==Number(yFilter.month)) return false;
+      if (yFilter.q && (r.note||'').toLowerCase().indexOf(yFilter.q.toLowerCase())===-1) return false;
+      return true;
+    }).sort(function(a,b){return b.ts-a.ts;});
+
+    var spend=0, vio=0, vioSum=0, avN=0, avSum=0;
+    list.forEach(function(r){
+      if (r.type==='V'){ avN++; avSum+=r.amt; }
+      else { spend+=r.amt; if(r.type==='B'){ vio++; vioSum+=r.amt; } }
+    });
+    $('#y-stats').innerHTML=
+      stat('记录条数', list.length)+
+      stat('消费合计', money(spend))+
+      stat('违规 '+vio+' 次', money(vioSum))+
+      stat('忍住 '+avN+' 次', money(avSum));
+
+    var box=$('#y-list'); box.innerHTML='';
+    if (!list.length){ box.innerHTML='<div class="mut" style="padding:24px 0;text-align:center;">没有符合条件的记录</div>'; return; }
+    var LIMIT=300, shown=0, lastKey=null;
+    for (var i=0;i<list.length && shown<LIMIT;i++){
+      var r=list[i], d=new Date(r.ts);
+      var key=d.getFullYear()+'年'+(d.getMonth()+1)+'月';
+      if (key!==lastKey){ var gt=document.createElement('div'); gt.className='grouptitle'; gt.textContent=key; box.appendChild(gt); lastKey=key; }
+      box.appendChild(recRow(r));
+      shown++;
+    }
+    if (list.length>LIMIT){
+      var more=document.createElement('div'); more.className='meta'; more.style.textAlign='center'; more.style.margin='12px 0';
+      more.textContent='仅显示前 '+LIMIT+' 条，请用筛选缩小范围'; box.appendChild(more);
+    }
+  }
+  $('#y-q').addEventListener('input', function(){ yFilter.q=this.value.trim(); renderHistory(); });
+  $('#y-cats').addEventListener('click', function(e){
+    var b=e.target.closest('.chip'); if(!b)return;
+    yFilter.f=b.dataset.f;
+    this.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',c===b);});
+    renderHistory();
+  });
+  $('#y-year').addEventListener('change', function(){ yFilter.year=this.value; renderHistory(); });
+  $('#y-month').addEventListener('change', function(){ yFilter.month=this.value; renderHistory(); });
+
+  /* ---- 总结 ---- */
+  function line(k,v){return '<div class="summary-line"><span class="mut">'+k+'</span><span class="num">'+v+'</span></div>';}
+  function renderSummary(){
+    var a=S.archives.length?S.archives[S.archives.length-1]:null;
+    $('#s-title').textContent=a?a.title+' 总结':'月度总结';
+    var card=$('#s-card');
+    if (!a){ card.innerHTML='<div class="mut">当前挑战还未结束。每月最后一天结束后自动生成总结。</div>'; }
+    else {
+      var verdict=a.rate>=100?'本月你成功完成挑战。':('本月挑战未完全完成，但仍完成了 '+a.rate+'% 的挑战。');
+      card.innerHTML=
+        '<div class="row" style="margin-bottom:8px;"><span class="mid">'+esc(a.title)+'</span><span class="spacer"></span><span class="meta num">'+a.days+' 天</span></div>'+
+        line('总消费',money(a.spent))+
+        line('挑战外消费',money(a.out))+
+        line('冲动消费次数',a.vio+' 次')+
+        line('成功避免的冲动消费',a.avoided+' 次'+(a.avoidedSum>0?' · 共 '+money(a.avoidedSum):''))+
+        line('训练天数',(a.wdays||0)+' 天')+
+        line('挑战完成率',a.rate+'%')+
+        '<div style="margin-top:12px;font-size:15px;font-weight:500;">'+verdict+'</div>';
+    }
+    $('#s-new').style.display=isEnded()?'':'none';
+    var h=$('#s-history'); h.innerHTML='';
+    if (!S.archives.length){ h.innerHTML='<div class="mut">暂无历史。</div>'; }
+    else S.archives.slice().reverse().forEach(function(x){
+      var d=document.createElement('div'); d.className='summary-line';
+      d.innerHTML='<span>'+esc(x.title)+'</span><span class="mut num">完成率 '+x.rate+'% · 违规 '+x.vio+' · 忍住 '+x.avoided+' · 训练 '+(x.wdays||0)+' 天</span>';
+      h.appendChild(d);
+    });
+  }
+  $('#h-goto-summary').onclick=function(){renderSummary();show('view-summary');};
+
+  /* ---- 开启新挑战 ---- */
+  function nextMonth(){
+    var p=C.end.split('-'), y=Number(p[0]), m=Number(p[1])+1;
+    if (m>12){m=1;y+=1;}
+    var endD=new Date(y,m,0);
+    return {start:y+'-'+pad(m)+'-01', end:y+'-'+pad(m)+'-'+pad(endD.getDate()), y:y, m:m};
+  }
+  function startNext(budget){
+    var nm=nextMonth();
+    S.ch={ id:nm.y+'-'+pad(nm.m), title:nm.m+'月消费挑战', start:nm.start, end:nm.end, budget:Math.round(budget), archived:false, train:'背' };
+    C=S.ch;
+    cStart=sod(new Date(C.start)); cEnd=sod(new Date(C.end));
+    total=Math.round((cEnd-cStart)/DAY)+1;
+    save(); renderHome(); show('view-home');
+  }
+  function promptBudget(){
+    var v=prompt('新挑战预算上限（开始后锁定）', C.budget);
+    if (v===null) return;
+    var b=parseFloat(v);
+    if (!(b>0)){ toast('请输入有效金额'); return; }
+    startNext(b);
+  }
+  $('#h-goto-new').onclick=promptBudget;
+  $('#s-new').onclick=promptBudget;
+
+  /* ---- 设置 ---- */
+  function renderSettings(){
+    $('#g-anchor').value=S.settings.anchor;
+    $('#g-cycle').value=S.settings.cycle;
+  }
+  $('#g-cheat-save').onclick=function(){
+    var a=$('#g-anchor').value, c=parseInt($('#g-cycle').value,10);
+    if (!a){ toast('请选择下一次放纵日'); return; }
+    S.settings.anchor=a;
+    S.settings.cycle=Math.max(1, c||14);
+    save(); renderHome();
+    flashBtn(this,'已保存 ✓');
+    toast('放纵日设置已保存，之后每 '+S.settings.cycle+' 天一次自动推算');
+  };
+  $('#g-cheat-today').onclick=function(){
+    S.settings.anchor=ymd(new Date());
+    save(); renderSettings(); renderHome();
+    flashBtn(this,'已设置 ✓');
+    toast('今天就是放纵日，下一次按周期自动推算');
+  };
+  $('#h-cheat-edit').onclick=function(){ show('view-settings'); };
+
+  /* ---- 导出 / 导入 ---- */
+  $('#g-export').onclick=function(){
+    var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='zilv-data-'+ymd(new Date())+'.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},5000);
+    flashBtn(this,'已导出 ✓');
+    toast('已导出 JSON 文件 · 包含消费、忍住、训练全部数据');
+  };
+  $('#g-import-btn').onclick=function(){
+    var txt=$('#g-import').value.trim();
+    if (!txt) return;
+    try{
+      var obj=JSON.parse(txt);
+      if (!obj || typeof obj!=='object' || !obj.ch) throw new Error('bad');
+      S=obj; C=S.ch;
+      S.records=S.records||[]; S.workouts=S.workouts||[]; S.archives=S.archives||[]; S.settings=S.settings||{cycle:14,anchor:'2026-09-23'};
+      cStart=sod(new Date(C.start)); cEnd=sod(new Date(C.end));
+      total=Math.round((cEnd-cStart)/DAY)+1;
+      save();
+      $('#g-import').value='';
+      renderHome(); renderWorkout(); renderHistory(); renderSummary(); renderSettings();
+      toast('已恢复备份数据');
+    }catch(e){ toast('JSON 格式不对，恢复失败'); }
+  };
+
+  /* ---- 安装提示 ---- */
+  var standalone=(window.navigator && window.navigator.standalone===true)||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches);
+  var dismissed=false;
+  try{ dismissed=sessionStorage.getItem('scd_install_dismissed')==='1'; }catch(e){}
+  if (!standalone && !dismissed){
+    var bar=$('#installbar'); bar.style.display='flex';
+    $('#installbar-x').onclick=function(){ bar.style.display='none'; try{sessionStorage.setItem('scd_install_dismissed','1');}catch(e){} };
+  }
+
+  renderHome(); renderWorkout(); renderHistory(); renderSummary(); renderSettings();
+})();
+</script>
+</body>
+</html>
